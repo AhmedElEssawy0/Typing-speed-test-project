@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing Speed Test Game</title>
+    <link rel="stylesheet" href="main.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&amp;display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="game">
+      <div class="name">Typing Speed Test Game</div>
+      <div class="container">
+        <div class="controls-section">
+          <div class="level-selector">
+            <label for="level-select">Select Level:</label>
+            <select id="level-select" class="level-select">
+              <option value="Easy">Easy (5 seconds)</option>
+              <option value="Normal" selected="selected">Normal (3 seconds)</option>
+              <option value="Hard">Hard (2 seconds)</option>
+            </select>
+          </div>
+          <div class="score-history">
+            <button id="show-history" class="history-btn">View Score History</button>
+          </div>
+        </div>
+
+        <div class="message">
+          You Are Playing On
+          <span class="lvl">Normal</span> Level <span class="ampersand">&amp;</span> You Have <span class="seconds">3</span> Seconds To Type The Word
+        </div>
+
+        <div class="start">Start Playing</div>
+
+        <div class="the-word" aria-live="polite" aria-atomic="true"></div>
+
+        <input type="text" class="input" placeholder="Type the word here..." aria-label="Input field for typing words" />
+
+        <div class="upcoming-words" aria-live="polite" aria-atomic="true">Words Will Show Here</div>
+
+        <div class="control">
+          <div class="time">Time Left: <span>0</span> Seconds</div>
+          <div class="score">Score: <span class="got">0</span> From <span class="total">0</span></div>
+        </div>
+
+        <div class="finish" aria-live="assertive" aria-atomic="true"></div>
+      </div>
+    </div>
+
+    <!-- Score History Modal -->
+    <div id="history-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Score History</h2>
+        <div id="history-list" class="history-list">
+          <p>No scores yet. Play a game to get started!</p>
+        </div>
+        <button id="clear-history" class="clear-btn">Clear History</button>
+      </div>
+    </div>
+
+    <!-- Validation Error Modal -->
+    <div id="validation-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Validation Error</h2>
+        <p id="validation-message"></p>
+        <button class="ok-btn">OK</button>
+      </div>
+    </div>
+
+    <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>

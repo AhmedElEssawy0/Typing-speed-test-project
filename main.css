@@ -1,0 +1,657 @@
+/* ============================================
+   Root Variables and Global Styles
+   ============================================ */
+:root {
+  --main-color: #2196f3;
+  --secondary-color: #009688;
+  --error-color: #f44336;
+  --success-color: #4caf50;
+  --light-bg: #eee;
+  --white: #ffffff;
+  --text-dark: #333333;
+  --border-radius: 6px;
+  --transition: all 0.3s ease;
+}
+
+/* ============================================
+   Reset and Base Styles
+   ============================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Game Container Styles
+   ============================================ */
+.game {
+  background-color: var(--light-bg);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 900px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Header Styles
+   ============================================ */
+.name {
+  background: linear-gradient(135deg, var(--main-color) 0%, #1976d2 100%);
+  color: var(--white);
+  padding: 30px 20px;
+  font-size: 28px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   Controls Section Styles
+   ============================================ */
+.controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.level-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.level-selector label {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.level-select {
+  padding: 10px 15px;
+  border: 2px solid var(--main-color);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  cursor: pointer;
+  background-color: var(--white);
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.level-select:hover,
+.level-select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px rgba(0, 150, 136, 0.3);
+  outline: none;
+}
+
+.score-history {
+  display: flex;
+  gap: 10px;
+}
+
+.history-btn {
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.history-btn:hover {
+  background-color: #00796b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.history-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Message Styles
+   ============================================ */
+.message {
+  background-color: var(--white);
+  padding: 20px;
+  margin: 20px;
+  border-radius: var(--border-radius);
+  text-align: center;
+  font-size: 16px;
+  border-left: 4px solid var(--main-color);
+}
+
+.message span {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.message span.ampersand {
+  color: var(--text-dark);
+}
+
+.message span::before {
+  content: "[ ";
+}
+
+.message span::after {
+  content: " ]";
+}
+
+.message span.ampersand::before,
+.message span.ampersand::after {
+  content: "";
+}
+
+/* ============================================
+   Start Button Styles
+   ============================================ */
+.start {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #00796b 100%);
+  color: var(--white);
+  padding: 20px;
+  margin: 0 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  user-select: none;
+}
+
+.start:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 150, 136, 0.3);
+}
+
+.start:active {
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Word Display Styles
+   ============================================ */
+.the-word {
+  text-align: center;
+  font-weight: bold;
+  font-size: 60px;
+  color: var(--main-color);
+  user-select: none;
+  padding: 30px 20px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+}
+
+/* ============================================
+   Input Field Styles
+   ============================================ */
+.input {
+  margin: 20px;
+  width: calc(100% - 40px);
+  display: block;
+  padding: 15px;
+  border: 3px solid var(--main-color);
+  font-size: 18px;
+  text-align: center;
+  text-transform: capitalize;
+  border-radius: var(--border-radius);
+  caret-color: var(--main-color);
+  transition: var(--transition);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 10px rgba(2, 150, 136, 0.3);
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+/* ============================================
+   Upcoming Words Styles
+   ============================================ */
+.upcoming-words {
+  background-color: #f9f9f9;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--border-radius);
+  min-height: 60px;
+  border: 1px solid #e0e0e0;
+}
+
+.upcoming-words div {
+  background-color: var(--main-color);
+  color: var(--white);
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Control Panel Styles
+   ============================================ */
+.control {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-top: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.control div {
+  font-size: 16px;
+}
+
+.control span {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.time {
+  flex: 1;
+  min-width: 150px;
+}
+
+.score {
+  flex: 1;
+  min-width: 150px;
+  text-align: right;
+}
+
+/* ============================================
+   Finish Message Styles
+   ============================================ */
+.finish {
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  padding: 30px 20px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.finish .good {
+  color: var(--success-color);
+}
+
+.finish .bad {
+  color: var(--error-color);
+}
+
+/* ============================================
+   Modal Styles
+   ============================================ */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999;
+  transition: var(--transition);
+}
+
+.close-modal:hover {
+  color: var(--text-dark);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+  padding-bottom: 10px;
+}
+
+.modal-content p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* ============================================
+   History List Styles
+   ============================================ */
+.history-list {
+  margin: 20px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-left: 4px solid var(--main-color);
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.history-item:hover {
+  background-color: #f0f0f0;
+  transform: translateX(5px);
+}
+
+.history-item-info {
+  flex: 1;
+}
+
+.history-item-level {
+  font-weight: bold;
+  color: var(--main-color);
+}
+
+.history-item-score {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.history-item-date {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+.clear-btn,
+.ok-btn {
+  padding: 12px 24px;
+  background-color: var(--error-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: var(--transition);
+  margin-top: 15px;
+}
+
+.clear-btn:hover,
+.ok-btn:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.clear-btn:active,
+.ok-btn:active {
+  transform: translateY(0);
+}
+
+.ok-btn {
+  background-color: var(--main-color);
+  width: 100%;
+}
+
+.ok-btn:hover {
+  background-color: #1976d2;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+  .name {
+    font-size: 22px;
+    padding: 20px 15px;
+  }
+
+  .container {
+    margin: 0 10px;
+    border-radius: 4px;
+  }
+
+  .controls-section {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
+  }
+
+  .level-selector,
+  .score-history {
+    width: 100%;
+  }
+
+  .level-selector {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .score-history {
+    justify-content: stretch;
+  }
+
+  .history-btn {
+    width: 100%;
+  }
+
+  .message {
+    margin: 15px;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .the-word {
+    font-size: 45px;
+    padding: 20px 15px;
+    min-height: 80px;
+  }
+
+  .input {
+    margin: 15px;
+    width: calc(100% - 30px);
+    font-size: 16px;
+  }
+
+  .upcoming-words {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .upcoming-words div {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .control {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .time,
+  .score {
+    text-align: left;
+  }
+
+  .score {
+    text-align: left;
+  }
+
+  .finish {
+    font-size: 28px;
+    padding: 20px 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .close-modal {
+    right: 15px;
+    top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 18px;
+    padding: 15px 10px;
+  }
+
+  .game {
+    padding: 10px;
+  }
+
+  .message {
+    margin: 10px;
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .message span::before,
+  .message span::after {
+    content: "";
+  }
+
+  .the-word {
+    font-size: 36px;
+    padding: 15px 10px;
+    min-height: 70px;
+  }
+
+  .input {
+    margin: 10px;
+    width: calc(100% - 20px);
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .upcoming-words {
+    margin: 10px;
+    padding: 10px;
+    gap: 5px;
+  }
+
+  .upcoming-words div {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .control {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .finish {
+    font-size: 22px;
+    padding: 15px 10px;
+  }
+
+  .start {
+    margin: 0 10px;
+    padding: 15px;
+    font-size: 16px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  body {
+    background-color: var(--white);
+  }
+
+  .game {
+    background-color: var(--white);
+    padding: 0;
+  }
+
+  .modal {
+    display: none;
+  }
+}
